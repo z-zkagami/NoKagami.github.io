@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-10T18:02:01.000Z</updated>
+  <updated>2016-08-10T18:04:07.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="http://yoursite.com/2016/08/07/OS%20X%20EI%20Capitan%20install%20ipython/"/>
     <id>http://yoursite.com/2016/08/07/OS X EI Capitan install ipython/</id>
     <published>2016-08-07T04:40:47.000Z</published>
-    <updated>2016-08-10T18:02:01.000Z</updated>
+    <updated>2016-08-10T18:04:07.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="OS-X-EI-Capitan安装ipython记录"><a href="#OS-X-EI-Capitan安装ipython记录" class="headerlink" title="OS X EI Capitan安装ipython记录"></a>OS X EI Capitan安装ipython记录</h3><hr>
 <p>想必会主动装ipython的都知道这是干啥的了。。也不多介绍，直接贴错误和解决办法</p>
 <p>os x自带python2.7.10，平时都是在vagrant里用ipython的。。谁想装个试试还各种错呢</p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>报错信息：<code>OSError: [Errno: 1] Operation not permitted: &#39;/System/Library/Frameworks/Python.framework/Versions/2.7/share</code></p>
-<p>Google了一下，是因为os x 10.11以后引入了新的安装机制SIP(System Integrity Protection)，为了保护系统完整性，默认锁定<code>/System,/sbin,/usr</code>三个目录，不管你如何sudo都是没用的。。</p>
+<p>Google了一下，是因为os x 10.11以后引入了新的安全机制SIP(System Integrity Protection)，为了保护系统完整性，默认锁定<code>/System,/sbin,/usr</code>三个目录，不管你如何sudo都是没用的。。</p>
 <hr>
 <h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>搜到了各种解决办法，有暴力的有优雅的。。</p>
 <h5 id="方法1-推荐-："><a href="#方法1-推荐-：" class="headerlink" title="方法1(推荐)："></a>方法1(推荐)：</h5><p>本人就是用这个方法安装成功的，直接运行命令</p>
