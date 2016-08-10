@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-10T17:56:31.000Z</updated>
+  <updated>2016-08-10T18:02:01.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2016/08/11/OS%20X%20EI%20Capitan%20install%20ipython/"/>
-    <id>http://yoursite.com/2016/08/11/OS X EI Capitan install ipython/</id>
-    <published>2016-08-10T17:09:31.000Z</published>
-    <updated>2016-08-10T17:56:31.000Z</updated>
+    <title>OS X EI Capitan install ipython记录</title>
+    <link href="http://yoursite.com/2016/08/07/OS%20X%20EI%20Capitan%20install%20ipython/"/>
+    <id>http://yoursite.com/2016/08/07/OS X EI Capitan install ipython/</id>
+    <published>2016-08-07T04:40:47.000Z</published>
+    <updated>2016-08-10T18:02:01.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="OS-X-EI-Capitan安装ipython记录"><a href="#OS-X-EI-Capitan安装ipython记录" class="headerlink" title="OS X EI Capitan安装ipython记录"></a>OS X EI Capitan安装ipython记录</h3><hr>
 <p>想必会主动装ipython的都知道这是干啥的了。。也不多介绍，直接贴错误和解决办法</p>
