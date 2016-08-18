@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="insomnium bogeyman">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="grains &amp;amp; pillar
+grains和pillar是saltstack中两个很重要的组件。
+grainsgrains的作用是收集minion基本的静态数据，比如CPU/kernel/OS/virtual/mem/disk等等。注意grains只在minion启动时做一次收集，要再次收集需手动sync、minion端主动请求、重启minion才生效。grains可以根据不同的业务进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="saltstack grains/pillar组件初探">
+<meta property="og:url" content="http://yoursite.com/2016/08/07/saltstack grains pillar组件初探/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="insomnium bogeyman">
+<meta property="og:description" content="grains &amp;amp; pillar
+grains和pillar是saltstack中两个很重要的组件。
+grainsgrains的作用是收集minion基本的静态数据，比如CPU/kernel/OS/virtual/mem/disk等等。注意grains只在minion启动时做一次收集，要再次收集需手动sync、minion端主动请求、重启minion才生效。grains可以根据不同的业务进行">
+<meta property="og:updated_time" content="2016-08-18T16:36:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="insomnium bogeyman">
+<meta name="twitter:title" content="saltstack grains/pillar组件初探">
+<meta name="twitter:description" content="grains &amp;amp; pillar
+grains和pillar是saltstack中两个很重要的组件。
+grainsgrains的作用是收集minion基本的静态数据，比如CPU/kernel/OS/virtual/mem/disk等等。注意grains只在minion启动时做一次收集，要再次收集需手动sync、minion端主动请求、重启minion才生效。grains可以根据不同的业务进行">
 
 
 
@@ -115,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/07/saltstack grains pillar组件初探/"/>
 
-  <title> Hexo </title>
+  <title> saltstack grains/pillar组件初探 | Hexo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,9 +232,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -249,10 +254,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/08/07/OS X EI Capitan install ipython/" itemprop="url">
-                  OS X EI Capitan install ipython记录
-                </a>
+                saltstack grains/pillar组件初探
               
             
           </h1>
@@ -292,124 +294,7 @@
       
 
       
-        
-          
-            <h3 id="OS-X-EI-Capitan安装ipython记录"><a href="#OS-X-EI-Capitan安装ipython记录" class="headerlink" title="OS X EI Capitan安装ipython记录"></a>OS X EI Capitan安装ipython记录</h3><hr>
-<p>想必会主动装ipython的都知道这是干啥的了。。也不多介绍，直接贴错误和解决办法</p>
-<p>os x自带python2.7.10，平时都是在vagrant里用ipython的。。谁想装个试试还各种错呢</p>
-<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>报错信息：<code>OSError: [Errno: 1] Operation not permitted: &#39;/System/Library/Frameworks/Python.framework/Versions/2.7/share</code></p>
-<p>Google了一下，是因为os x 10.11以后引入了新的安全机制SIP(System Integrity Protection)，为了保护系统完整性，默认锁定<code>/System,/sbin,/usr</code>三个目录，不管你如何sudo都是没用的。。</p>
-<hr>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>搜到了各种解决办法，有暴力的有优雅的。。</p>
-<h5 id="方法1-推荐-："><a href="#方法1-推荐-：" class="headerlink" title="方法1(推荐)："></a>方法1(推荐)：</h5><p>本人就是用这个方法安装成功的，直接运行命令</p>
-<p><code>pip install ipython --user -U</code></p>
-<p>就可以直接安装成功了，安装完做个软连接到$PATH中即可</p>
-<p><code>ln -sf ~/Library/Python/2.7/bin/ipython /usr/local/bin/</code></p>
-<p>这样就OK啦- 3-</p>
-<h5 id="方法2-没折腾。。-："><a href="#方法2-没折腾。。-：" class="headerlink" title="方法2(没折腾。。)："></a>方法2(没折腾。。)：</h5><p>使用<code>virtualenv + virtualenvwrapper/autoenv</code>，因为第一种已经解决了hiahiahia</p>
-<p>感兴趣的童鞋可以尝试一下：<a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/" target="_blank" rel="external">传送门</a></p>
-<h5 id="方法3-不推荐-："><a href="#方法3-不推荐-：" class="headerlink" title="方法3(不推荐)："></a>方法3(不推荐)：</h5><p>直接关闭SIP机制，这样是爽了，不过很危险啊</p>
-<p>按住Command+R，直到出现苹果Logo，进入恢复模式，菜单—&gt;实用工具—&gt;终端—&gt;输入<code>csutil disable</code>后回车—&gt;重启即可，想要恢复SIP重复上述操作</p>
-<h5 id="方法4："><a href="#方法4：" class="headerlink" title="方法4："></a>方法4：</h5><p>使用brew重新装一个python，然后替换掉系统自带版本，有老外说brew的版本不稳，会crash randomly，不过貌似EI Capitan也改不了。。如果不关闭SIP的话，没有求证不知道。。该睡觉了 Z_Zzzz…</p>
-<p>最后再提一点，别使用sudo pip</p>
-<blockquote>
-<p>  Instructions telling <code>sudo pip install</code> are inherently wrong</p>
-<p>  If there is any tutorial out there which says you should do <code>sudo pip</code> then please file a bug against this package. The author is dis-educating Python community, as time has proven <code>sudo pip</code> to be a broken practice.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/07/saltstack grains pillar组件初探/" itemprop="url">
-                  saltstack grains/pillar组件初探
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-07T12:40:47+08:00" content="2016-08-07">
-              2016-08-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="grains-amp-pillar"><a href="#grains-amp-pillar" class="headerlink" title="grains &amp; pillar"></a>grains &amp; pillar</h3><hr>
+        <h3 id="grains-amp-pillar"><a href="#grains-amp-pillar" class="headerlink" title="grains &amp; pillar"></a>grains &amp; pillar</h3><hr>
 <p>grains和pillar是saltstack中两个很重要的组件。</p>
 <h4 id="grains"><a href="#grains" class="headerlink" title="grains"></a>grains</h4><p>grains的作用是收集minion基本的静态数据，比如CPU/kernel/OS/virtual/mem/disk等等。注意grains只在minion启动时做一次收集，要再次收集需手动sync、minion端主动请求、重启minion才生效。grains可以根据不同的业务进行个性化配置，比如通过jinja2来区分不同的操作系统：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% if grains[&apos;os&apos;] == &apos;Ubuntu&apos; %&#125;</div><div class="line">host： &#123;&#123; grains[&apos;host&apos;] &#125;&#125;</div><div class="line">&#123;% elif grains[&apos;os&apos;] == &apos;CentOS&apos; %&#125;</div><div class="line">host: &#123;&#123; grains[&apos;fqdn&apos;] &#125;&#125;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
@@ -473,16 +358,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">salt &apos;minion-1&apos; state.highstate</div><div class="line"></div><div class="line">minion-1:</div><div class="line">----------</div><div class="line">          ID: apache</div><div class="line">    Function: pkg.installed</div><div class="line">        Name: httpd</div><div class="line">      Result: True</div><div class="line">     Comment: Package httpd is already installed</div><div class="line">     Started: 16:52:22.956851</div><div class="line">    Duration: 1794.323 ms</div><div class="line">     Changes:   </div><div class="line">----------</div><div class="line">          ID: apache</div><div class="line">    Function: service.running</div><div class="line">        Name: httpd</div><div class="line">      Result: True</div><div class="line">     Comment: Started Service httpd</div><div class="line">     Started: 16:52:24.754977</div><div class="line">    Duration: 448.059 ms</div><div class="line">     Changes:   </div><div class="line">              ----------</div><div class="line">              httpd:</div><div class="line">                  True</div><div class="line"></div><div class="line">Summary for minion-1</div><div class="line">------------</div><div class="line">Succeeded: 2 (changed=1)</div><div class="line">Failed:    0</div><div class="line">------------</div><div class="line">Total states run:     2</div></pre></td></tr></table></figure>
 <p>就先写到这儿吧。。还得赶python的进度。。python要很熟才能把这玩意儿玩的溜儿啊ORZ</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -490,278 +379,36 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/07/mac搭建GitHub+Hexo blog记录/" rel="next" title="mac搭建GitHub+Hexo blog记录">
+                <i class="fa fa-chevron-left"></i> mac搭建GitHub+Hexo blog记录
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/08/07/mac搭建GitHub+Hexo blog记录/" itemprop="url">
-                  mac搭建GitHub+Hexo blog记录
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-07T12:40:47+08:00" content="2016-08-07">
-              2016-08-07
-            </time>
-          </span>
-
-          
-
-          
+              <a href="/2016/08/07/OS X EI Capitan install ipython/" rel="prev" title="OS X EI Capitan install ipython记录">
+                OS X EI Capitan install ipython记录 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>参考Google到的各种blog的文章写作而成，第一篇blog肯定得记录一下啊 - 3-</p>
-<hr>
-<h4 id="基础环境安装"><a href="#基础环境安装" class="headerlink" title="基础环境安装"></a>基础环境安装</h4><h5 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h5><p>用于生成静态页面。</p>
-<p>Mac安装当然首选homebrew了(如果没有安装，请移步<a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">homebrew官网</a>)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
-<p>其它方法：移步<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">Hexo官网文档</a></p>
-<h5 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h5><p>用来将本地Hexo内容commit到GitHub</p>
-<p>MacOS(P.S还是喜欢叫：欧艾斯叉..)，买了Mac居然不装Xcode？同样参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">Hexo官方document</a></p>
-<hr>
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>Node.js和Git都安装好了，安装Hexo之前安装淘宝的npm镜像站，速度快一些。。我挂着为皮恩都一直出现404。。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
-<p>开始安装Hexo，这里加上<code>sudo</code>是避免权限问题报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cnpm install -g hexo</div></pre></td></tr></table></figure>
-<p>接着初始化并创建本地博客目录，首先创建一个你的目录，这里以<code>myhexo</code>为例，初始化创建的博客目录为<code>nokagami</code>，两个目录名字随你喜好</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/myhexo</div><div class="line">hexo init nokagami</div></pre></td></tr></table></figure>
-<p>然后执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install</div></pre></td></tr></table></figure>
-<p>现在你可以打开浏览器输入：<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
-<p>就能看到你的博客了，默认安装的是<code>landscape</code>的主题，后面会讲到如何更换主题。现在可以Ctrl+c退出了，接着继续</p>
-<hr>
-<h4 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h4><p>这里默认你已经有了GitHub账号并且已经添加了Key信任(如果没有账号，也不知道怎么添加Key的童鞋请移步<a href="https://github.com/" target="_blank" rel="external">GitHub官网</a>，还没有注册的童鞋们，这里也要大写加粗下划线的强调一下：<strong><u><del>一定要起一个狂霸酷炫叼炸天的用户名啊，噗～</del></u></strong>)</p>
-<p>…</p>
-<p>…</p>
-<p>…</p>
-<p>…</p>
-<p>…</p>
-<p>好了现在账号有了，<del>叼炸天的名字也有了</del>。咱可以去GitHub上<code>create New repository</code>，<code>Repository name</code>的格式必须是<code>username.github.io</code>,<code>username</code>就是前面强调的你那叼炸天的用户名，如果不是<code>username</code>，会报404错，其它啥的不用填不用选也没关系。创建好了GitHub会生成一个<code>.git</code>的链接，复制它，马上要用到</p>
-<p>刚才说到本地的Hexo已经安装成功并且可以运行了，我们来看看里面都有些啥：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls nokagami</div><div class="line"></div><div class="line">_config.yml  node_modules public       source</div><div class="line">db.json      package.json scaffolds    themes</div></pre></td></tr></table></figure>
-<p>看名字都简单易懂。</p>
-<p>现在修改配置文件<code>_config.yml</code>，这里得吐槽一下yaml的语法，注意下面的冒号后面必须有<strong>一个空格</strong>，后面没有内容的可以不用。。还有一点就是Hexo3.x以后的版本<code>type</code>改为<code>git</code>并不是老版本的<code>github</code>了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">vim _config.yml</div><div class="line"></div><div class="line"># 按G跳到文末，然后编辑，注意把username替换成你的用户名</div><div class="line"></div><div class="line">deploy: </div><div class="line">  type: git</div><div class="line">  repository: https://github.com/username/username.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<p>现在还在博客目录下的吧？<code>pwd</code>确认一下位置，如果是的话继续。</p>
-<p>生成静态页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g    #全称 hexo generate</div></pre></td></tr></table></figure>
-<p>部署，Hexo会自动将内容commit到GitHub仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d    #全称 hexo deploy</div></pre></td></tr></table></figure>
-<p>如果执行出现各种错请看这里：</p>
-<p>错误1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR Local hexo not found in ~/blog</div><div class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</div></pre></td></tr></table></figure>
-<p>按照提示安装即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install hexo --save</div></pre></td></tr></table></figure>
-<p>错误2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">error deployer not found:git</div></pre></td></tr></table></figure>
-<p>需要安装<code>hexo-developer-git</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install hexo-developer-git --save</div></pre></td></tr></table></figure>
-<p>再吐个槽，这里就知道切淘宝镜像的好处了，我挂着为皮恩，在这里安装一直提示以下信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-developer-git --save</div><div class="line"></div><div class="line">npm ERR! Darwin 15.4.0</div><div class="line">npm ERR! argv &quot;/usr/local/Cellar/node/6.2.2/bin/node&quot; &quot;/usr/local/bin/npm&quot; &quot;install&quot; &quot;hexo-developer-git&quot; &quot;--save&quot;</div><div class="line">npm ERR! node v6.2.2</div><div class="line">npm ERR! npm  v3.9.5</div><div class="line">npm ERR! code E404</div><div class="line"></div><div class="line">npm ERR! 404 Registry returned 404 for GET on https://registry.npmjs.org/hexo-developer-git</div><div class="line">npm ERR! 404</div><div class="line">npm ERR! 404  &apos;hexo-developer-git&apos; is not in the npm registry.</div><div class="line">npm ERR! 404 You should bug the author to publish it (or use the name yourself!)</div><div class="line">npm ERR! 404</div><div class="line">npm ERR! 404 Note that you can also install from a</div><div class="line">npm ERR! 404 tarball, folder, http url, or git url.</div></pre></td></tr></table></figure>
-<p>其它错误暂时没有遇到了。</p>
-<p>再次执行生成和部署命令，仓库名还记得吗？<a href="https://username.github.io" target="_blank" rel="external">https://username.github.io</a></p>
-<p>在浏览器输入就能看到和之前在本地看到的一样的博客了。</p>
-<p>文章的保存路径在博客目录下的souce/_posts下，Hexo是使用MarkDown来书写的，Google一下一大把的语法教程，生成新文章的操作，博客默认会生成一篇<code>hello-world.md</code>的文章，参考那个就好。</p>
-<hr>
-<h4 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h4><p><a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo官方主题</a>提供了一些，看个人喜好，这里以star很多的<code>next</code>主题为例说明，当然其他类似<code>pacman</code>什么的也是极好的选择：</p>
-<p>现在应该还在博客目录下，<code>pwd</code>下再次确认自己的位置。。</p>
-<p>然后咱clone next主题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>修改配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim _config.yml</div><div class="line"></div><div class="line">#找到theme,将默认的landscape替换为next</div><div class="line"></div><div class="line">theme: next</div></pre></td></tr></table></figure>
-<p>清除缓存并部署</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo clean    #清除db.json和已经生成的静态文件pulic</div><div class="line"></div><div class="line">hexo g    #重新生成</div><div class="line"></div><div class="line">hexo d    #部署生效</div></pre></td></tr></table></figure>
-<p>刷新username.github.io就可以看到修改了，next主题的详细教程请参看，：<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">next教程</a></p>
-<p>主要是分清楚站点配置文件和主题配置文件。</p>
-<p>其它的有时间再补充了，我也是萌新一枚。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/07/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-07T12:40:47+08:00" content="2016-08-07">
-              2016-08-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -769,6 +416,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -788,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/dorame.png"
@@ -832,6 +492,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#grains-amp-pillar"><span class="nav-number">1.</span> <span class="nav-text">grains & pillar</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#grains"><span class="nav-number">1.1.</span> <span class="nav-text">grains</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义grains数据"><span class="nav-number">1.1.1.</span> <span class="nav-text">定义grains数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pillar"><span class="nav-number">1.2.</span> <span class="nav-text">pillar</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pillar的定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">pillar的定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#state"><span class="nav-number">1.3.</span> <span class="nav-text">state</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -935,6 +606,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
